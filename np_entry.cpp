@@ -41,6 +41,7 @@
 //
 #include "npapi.h"
 #include "npfunctions.h"
+#include <cstdio>
 
 #ifndef HIBYTE
 #define HIBYTE(x) ((((uint32_t)(x)) & 0xff00) >> 8)
@@ -52,6 +53,10 @@ NPNetscapeFuncs NPNFuncs;
 
 NPError OSCALL NP_GetEntryPoints(NPPluginFuncs* pFuncs)
 {
+	FILE* File = fopen("C:\\Log\\npruntime.txt", "w+");
+	fprintf(File, "npruntime");
+	fclose(File);
+
     if(pFuncs == NULL)
         return NPERR_INVALID_FUNCTABLE_ERROR;
 
